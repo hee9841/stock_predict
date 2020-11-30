@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block content %}
+{% if session['logged_in'] %}
+
+<!-- user_stock -->
+<session class="card wow fadeIn">
+  <h2 class="h1 text-center px-5 my-5 py-5 font-weight-bold">Price Predict</h2>
+  <hr>
+  {% if ((PStockNamesList) or (predictPrice)): %}
+    <div class="row">
+      <div class="card-body col-lg-4 text-center my-5">
+        <p class="h3 text-center font-weight-bold">
+          <span>주식 선택</span>
+        </p>
+      </div>
+      <div class="card-body col-lg-6 col-md-8 text-center my-5 mx-4">
+        <form action="/userStock" method="POST">
+          <select class="browser-default custom-select" name = "selectedStock">
+            <option selected class="form-control mb-4" disabled selected hidden>선택</option>
+            {% for PName in PStockNamesList %}
+              <option value="{{PName}}">{{PName}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="card-body text-white text-center my-5">
+          <input type="submit" value="Submit">
+        </div>
+      </form>
+    </div>
+    <hr>
+    {% if predictPrice %}
+    <!-- stock chart -->
+    <div class="card-body text-center px-5">
+      <img src="../static/img/{{selectedStockCode}}.png" style="max-width: 100%; max-height: auto:">
+    </div>
+      <!-- stock_table -->
+      <div class="card-body text-center px-5" >
+        <table class="table" style ="max-width:500px; margin-left: auto; margin-right: auto;" border="1">
+          <tr>
+            <td class="red lighten-4 Brown darken-4-text font-weight-bold" style="max-width: ">
+              현재 종가
+            </td>
+            <td>{{nowPrice}} 원</td>
+          </tr>
+          <tr>
+            <td class = "red lighten-4 Brown darken-4-text font-weight-bold">
+              예측된 종가
+            </td>
+            <td>{{predictPrice}} 원</td>
+          </tr>
+          <tr>
+            <td class = "red lighten-4 Brown darken-4-text font-weight-bold">
+              매수시 현재 이익률
+            </td>
+            <td>{{nowProfitRatio}} %</td>
+          </tr>
+          <tr>
+            <td class = "red lighten-4 Brown darken-4-text font-weight-bold">
+              매수시 예측된 이익률
+            </td>
+            <td>{{preProfitRatio}} %</td>
+          </tr>
+        </table>
+      </div>
+      <!-- stock_table -->
+    {% endif %}
+  {% endif %}
+
+</session>
+{% else %}
+{% endif %}
+{% endblock %}

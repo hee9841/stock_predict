@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+{% if session['logged_in'] %}
+
+  {% if data %}
+  <h3>{{data}}<h3>
+  {% else %}
+  <!--Main Navigation-->
+  <!--Main Navigation-->
+  {% endif %}
+
+  <!--로그인 안됬을/-->
+{% else %}
+<!--Main Navigation-->
+  <!--Main Navigation-->
+{% endif %}
+
+<!--Main layout-->
+  <main class="mt-5 pt-5">
+    <div class="container">
+
+      <!--Section: Jumbotron-->
+      <section class="card wow fadeIn" style="background-image: url(https://mdbootstrap.com/img/Photos/Others/background3.jpg);">
+
+        <!-- Content -->
+        <div class="card-body text-white text-center py-5 px-5 my-5">
+
+          <h1 class="mb-4">
+            <strong>종가 예측 사이트</strong>
+          </h1>
+          <p>
+            <strong>Best & free Stock Price Prediction</strong>
+          </p>
+          <p class="mb-4">
+            <strong>내일의 주식의 종가를 예측 할 수 있습니다.</strong>
+          </p>
+          <a target="_blank" href="https://github.com/hee9841/sw-project" class="btn btn-outline-white btn-lg">
+            Start tutorial
+            <i class="fab fa-github mr-2"></i>
+          </a>
+
+        </div>
+        <!-- Content -->
+      </section>
+      <!--Section: Jumbotron-->
+
+
+    </div>
+  </main>
+  <!--Main layout-->
+{% endblock %}
