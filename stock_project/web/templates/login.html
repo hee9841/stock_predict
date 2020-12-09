@@ -1,4 +1,3 @@
-
 {% extends "base.html" %}
 {% block content %}
 {% if session['logged_in'] %}
@@ -23,28 +22,20 @@
 
   <!--Card content-->
   <div class="card-body px-lg-5 pt-0">
-
     <!-- Form -->
     <form class="text-center" style="color: #757575;" action="/login" method="POST">
-
       <!-- ID-->
       <div class="md-form">
         <input type="text" name='username' id="materialLoginFormEmail" class="form-control" placeholder="Id">
         <!--<label for="materialLoginFormEmail">E-mail</label>-->
       </div>
-
     <!-- Password -->
       <div class="md-form">
         <input type="password" name='password' id="materialLoginFormPassword" class="form-control" placeholder="Password">
         <!--<label for="materialLoginFormPassword">Password</label>-->
-
       </div>
-
       <!-- Sign in button -->
-
       <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Sign in</button>
-
-
     </form>
     <!-- Form -->
 

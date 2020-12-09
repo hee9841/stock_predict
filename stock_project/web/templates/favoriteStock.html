@@ -3,9 +3,8 @@
 {% if session['logged_in'] %}
 
 <session class="card wow fadeIn">
-  <h2 class="h1 text-center px-5 my-5 py-5 font-weight-bold">Price Predict</h2>
+  <h2 class="h1 text-center px-5 my-5 py-5 font-weight-bold">Favorite Stockt</h2>
   <hr>
-  {% if ((FStockNamesList) or (predictPrice)): %}
     <div class="row">
       <div class="card-body col-lg-4 text-center my-5">
         <p class="h3 text-center font-weight-bold">
@@ -51,7 +50,6 @@
       </div>
       <!-- stock_table -->
     {% endif %}
-  {% endif %}
 
 </session>
 {% else %}

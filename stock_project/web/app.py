@@ -16,20 +16,12 @@ import numpy as np
 app = Flask(__name__)
 
 
-# main
-
 
 @app.route('/', methods=['GET'])
 def home():
-    """ Session control"""
-    if not session.get('logged_in'):
-        return render_template('index.html')
-    else:
-        return render_template('index.html')
+    return render_template('index.html')
 
 # log-In
-
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'GET':
@@ -84,37 +76,41 @@ def userStock():
                     PStockNamesList.append(name[1])
 
     if request.method == 'GET':
+        return render_template('userStock.html', PuserStockList=PuserStockList, PStockNamesList=PStockNamesList)
         # 사용자가 저장한 주식 카테로그가 'P'이면 사용자 주식 정보, 주식이름 전달
-        if PStockNamesList:
-            return render_template('userStock.html', PuserStockList=PuserStockList, PStockNamesList=PStockNamesList)
-        else:
-            return render_template('userStock.html')
+        # if PStockNamesList:
+        #     return render_template('userStock.html', PuserStockList=PuserStockList, PStockNamesList=PStockNamesList)
+        # else:
+        #     return render_template('userStock.html')
     # POST 방식이면
     else:
         selectedStock = request.form.get('selectedStock')
-        for name in allNameList:
-            if name[1] == selectedStock:
-                selectedStockCode = name[0]
-        predictStock = stockData.stockData(selectedStockCode)
-        # 차트 이미지로 저장
-        predictStock.drawChart()
-        # 종가 예측
-        predictPrice = predictStock.pradiction()
-        nowPrice = predictStock.ClosePrice()
-        for data in PuserStockList:
-            if data[1] == selectedStockCode:
-                prchasePrice = data[4]  # 매수단가
-                prchaseNum = data[5]
-        # 수익률(%) = ((현재 주식가격 / 매입한 주식 가격)-1)*100
-        preProfitRatio = np.round(
-            (((predictPrice / prchasePrice) - 1) * 100), 2)
-        nowProfitRatio = np.round((((nowPrice / prchasePrice) - 1) * 100), 2)
-        strnowProfitRatio = str(nowProfitRatio)
-        strnowProfitRatio = strnowProfitRatio[1:-1]
-        return render_template('userStock.html', nowPrice=int(nowPrice),
-                               preProfitRatio=preProfitRatio, predictPrice=predictPrice,
-                               nowProfitRatio=strnowProfitRatio, PuserStockList=PuserStockList,
-                               PStockNamesList=PStockNamesList, selectedStockCode = selectedStockCode)
+        if selectedStock:
+            for name in allNameList:
+                if name[1] == selectedStock:
+                    selectedStockCode = name[0]
+            predictStock = stockData.stockData(selectedStockCode)
+            # 차트 이미지로 저장
+            predictStock.drawChart()
+            # 종가 예측
+            predictPrice = predictStock.pradiction()
+            nowPrice = predictStock.ClosePrice()
+            for data in PuserStockList:
+                if data[1] == selectedStockCode:
+                    prchasePrice = data[4]  # 매수단가
+                    prchaseNum = data[5]
+            # 수익률(%) = ((현재 주식가격 / 매입한 주식 가격)-1)*100
+            preProfitRatio = np.round(
+                (((predictPrice / prchasePrice) - 1) * 100), 2)
+            nowProfitRatio = np.round((((nowPrice / prchasePrice) - 1) * 100), 2)
+            strnowProfitRatio = str(nowProfitRatio)
+            strnowProfitRatio = strnowProfitRatio[1:-1]
+            return render_template('userStock.html', nowPrice=int(nowPrice),
+                                   preProfitRatio=preProfitRatio, predictPrice=predictPrice,
+                                   nowProfitRatio=strnowProfitRatio, PuserStockList=PuserStockList,
+                                   PStockNamesList=PStockNamesList, selectedStockCode=selectedStockCode)
+        else:
+            return render_template('userStock.html', PuserStockList=PuserStockList, PStockNamesList=PStockNamesList)
 
 # UserStockPage
 
@@ -136,11 +132,12 @@ def favoriteStock():
                     FStockNamesList.append(name[1])
 
     if request.method == 'GET':
+        return render_template('favoriteStock.html', FavorStockList=FavorStockList, FStockNamesList=FStockNamesList)
         # 사용자가 저장한 주식 카테로그가 'F'이면 사용자 주식 정보, 주식이름 전달
-        if FStockNamesList:
-            return render_template('favoriteStock.html', FavorStockList=FavorStockList, FStockNamesList=FStockNamesList)
-        else:
-            return render_template('favoriteStock.html')
+        # if FStockNamesList:
+        #     return render_template('favoriteStock.html', FavorStockList=FavorStockList, FStockNamesList=FStockNamesList)
+        # else:
+        #     return render_template('favoriteStock.html')
     # POST 방식이면
     else:
         selectedStock = request.form.get('selectedStock')
@@ -153,10 +150,10 @@ def favoriteStock():
         # 종가 예측
         predictPrice = predictStock.pradiction()
         nowPrice = predictStock.ClosePrice()
-        return render_template('favoriteStock.html', selectedStockCode = selectedStockCode, nowPrice=int(nowPrice), predictPrice=predictPrice, FavorStockList=FavorStockList, FStockNamesList=FStockNamesList)
+        return render_template('favoriteStock.html', selectedStockCode=selectedStockCode, nowPrice=int(nowPrice), predictPrice=predictPrice, FavorStockList=FavorStockList, FStockNamesList=FStockNamesList)
 
 
 if __name__ == '__main__':
 
-    app.secret_key = "123"
+    app.secret_key = "a03mfk$d"
     app.run(debug=True)

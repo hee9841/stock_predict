@@ -6,7 +6,8 @@ from mplfinance.original_flavor import candlestick2_ohlc
 import pandas as pd
 import numpy as np
 import tensorflow as tf
-from datetime import datetime
+from datetime import datetime, timedelta
+from pandas_datareader import data
 
 from tensorflow.keras.models import Sequential, load_model
 from tensorflow.keras.layers import Dense, LSTM, Dropout, Activation

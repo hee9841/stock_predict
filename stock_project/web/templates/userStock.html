@@ -4,9 +4,8 @@
 
 <!-- user_stock -->
 <session class="card wow fadeIn">
-  <h2 class="h1 text-center px-5 my-5 py-5 font-weight-bold">Price Predict</h2>
+  <h2 class="h1 text-center px-5 my-5 py-5 font-weight-bold">User Stock</h2>
   <hr>
-  {% if ((PStockNamesList) or (predictPrice)): %}
     <div class="row">
       <div class="card-body col-lg-4 text-center my-5">
         <p class="h3 text-center font-weight-bold">
@@ -35,7 +34,7 @@
     </div>
       <!-- stock_table -->
       <div class="card-body text-center px-5" >
-        <table class="table" style ="max-width:500px; margin-left: auto; margin-right: auto;" border="1">
+        <table border="1" class="table" style ="max-width:500px; margin-left: auto; margin-right: auto;" border="1">
           <tr>
             <td class="red lighten-4 Brown darken-4-text font-weight-bold" style="max-width: ">
               현재 종가
@@ -64,7 +63,6 @@
       </div>
       <!-- stock_table -->
     {% endif %}
-  {% endif %}
 
 </session>
 {% else %}
