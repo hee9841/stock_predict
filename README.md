@@ -17,10 +17,10 @@
 > ● 데이터로 주식차트 표현
 > 
 ## 2.2 기능 절차
-> ● 실제 주식 가격 예측 절차
+> #### ● 실제 주식 가격 예측 절차
 ![image](https://user-images.githubusercontent.com/70899677/120452978-9591bb80-c3cd-11eb-958c-40bc18f84739.png)
 > 
-> ● 프로젝트 주식 가격 예측 절차
+> #### ● 프로젝트 주식 가격 예측 절차
 ![image](https://user-images.githubusercontent.com/70899677/120453238-d38edf80-c3cd-11eb-893f-e1c175baa10b.png)
 
 ----------------------------------------------------------------------------------------------------------------------------------
@@ -36,20 +36,20 @@
 
 # 4. 데이터 분석
 ## 4.1 LSTM
-> ● <그림 4-1>
+> #### ● <그림 4-1>
 ![image](https://user-images.githubusercontent.com/70899677/120453521-15b82100-c3ce-11eb-9e2c-8e1d94aa5dc3.png)
-> ● <그림 4-2>
+> #### ● <그림 4-2>
 ![image](https://user-images.githubusercontent.com/70899677/120453532-18b31180-c3ce-11eb-932b-e73d785d668d.png)
  데이터 분석으로는 RNN(Recurrent Neural Networks)의 한 종료인 LSTM(Long Short-Term Memory models) 모델을 사용해주었다. RNN은 순차 데이터를 이용해서 학습시킬 때 많이 사용하는 모델로 앞에서 입력 받는 데이터를 기억해 두어 현재 데이터에 적용 시키는 방법이다. <그림 4-1>와 <그림 4-2>는 RNN의 구조를 나타내준다.
  RNN의 길이가 길어지게 되면 앞에 정보가 뒤에까지 충분히 전되지 않아서 정보량이 소실되는 문제가 발생하는데 이를 해결한 것이 바로 LSTM이다. LSTM은 앞에서 기억된 정보를 넘기기 전에 기억된 값을 다음 층으로 넘길지 결정을 하여 넘긴다.
 
 ## 4.2 손실 함수
  손실함수로는 MSE(Mean Squared Error, 평균제곱오차)를 사용하였다. 일반적으로 선형회기에서 많이 사용하는 손실함수이다. 손실 함수는 실제 데이터 값과 예측한 결과 값의 오차를 줄이기 위해 사용한다. <그림 4-3>은 MSE 공식이고 MSE의 값이 작을수록 정답에 가까이 나오게 된다.
-> ● <그림 4-3 > MSE 공식 https://bitcodic.tistory.com/108 (최종 검색일 : 2020-12-09)
+> #### ● <그림 4-3 > MSE 공식 https://bitcodic.tistory.com/108 (최종 검색일 : 2020-12-09)
 ![image](https://user-images.githubusercontent.com/70899677/120453850-56b03580-c3ce-11eb-8981-23d3586e8457.png)
 
 ## 4.3 학습 데이터
-> ● <그림 4-4> 삼성전자 주식 가격 데이터
+> #### ● <그림 4-4> 삼성전자 주식 가격 데이터
 ![image](https://user-images.githubusercontent.com/70899677/120454127-8fe8a580-c3ce-11eb-9cd4-8dde2d95db21.png)
 
  학습 시킬 데이터는 <그림 4-4>처럼 삼성전자 주식 가격 데이터를 사용했고 독립변수와 종속변수 둘 다 Close(종가)를 사용해 주었다. 그리고 학습을 해주는 학습 셋과 테스트를 해주는 테스트 셋으로 나누어서 학습과 테스트를 같이 진행하도록 설계하였다.
@@ -59,14 +59,14 @@
  # 5. 데이터 학습 결과
  ## 5.1 손실률
  > ● 학습 후 손실률은 0.00143이 나왔다.
- ![image](https://user-images.githubusercontent.com/70899677/120454417-d4744100-c3ce-11eb-8c2c-0af3452e53aa.png)
+ > ![image](https://user-images.githubusercontent.com/70899677/120454417-d4744100-c3ce-11eb-8c2c-0af3452e53aa.png)
  
  ## 5.2 학습 셋과 테스트 셋 학습 결과
  > ● 학습 셋과 테스트 셋의 손실률 그래프
- ![image](https://user-images.githubusercontent.com/70899677/120454722-1b623680-c3cf-11eb-80f1-89aef68e32cf.png)
+ > ![image](https://user-images.githubusercontent.com/70899677/120454722-1b623680-c3cf-11eb-80f1-89aef68e32cf.png)
  
  > ● 예측 값과 실제 값  비교 그래프
- ![image](https://user-images.githubusercontent.com/70899677/120454761-21581780-c3cf-11eb-9d59-5ae4d51da278.png)
+ > ![image](https://user-images.githubusercontent.com/70899677/120454761-21581780-c3cf-11eb-9d59-5ae4d51da278.png)
 
 --------------------------------------------------------------------------------------------------------------------------------
 
@@ -79,10 +79,10 @@
 
 ## 6.3 사용자 주식 카테고리
  > ● 주식 선택 전
-![image](https://user-images.githubusercontent.com/70899677/120455347-a5aa9a80-c3cf-11eb-8975-176622b34916.png)
+ > ![image](https://user-images.githubusercontent.com/70899677/120455347-a5aa9a80-c3cf-11eb-8975-176622b34916.png)
 
  > ● <주식 선택 후> 30일간 주식 차트와 예측한 내일의 종가, 현재 종가가 출력 됨
- ![image](https://user-images.githubusercontent.com/70899677/120455335-a3484080-c3cf-11eb-97da-0300e14ee0de.png)
+ > ![image](https://user-images.githubusercontent.com/70899677/120455335-a3484080-c3cf-11eb-97da-0300e14ee0de.png)
  
  ---------------------------------------------------------------------------------------------------------------------------
  
