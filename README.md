@@ -15,10 +15,11 @@
 > ● 사용자의 매매주식 관리 카테고리
 > ● 주식가격과 수익률 예측
 > ● 데이터로 주식차트 표현
+> 
 ## 2.2 기능 절차
 > ● 실제 주식 가격 예측 절차
 ![image](https://user-images.githubusercontent.com/70899677/120452978-9591bb80-c3cd-11eb-958c-40bc18f84739.png)
-
+> 
 > ● 프로젝트 주식 가격 예측 절차
 ![image](https://user-images.githubusercontent.com/70899677/120453238-d38edf80-c3cd-11eb-893f-e1c175baa10b.png)
 
